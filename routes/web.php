@@ -22,6 +22,22 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+    Route::get('profil', 'UserController@TampilUbahProfil')->name('profil');
+
+    Route::group(['prefix' => 'edit'], function(){
+
+        Route::get('password',[
+            'uses' => 'UserController@ubahPassword',
+            'as' => 'edit.password'
+        ]);
+
+        Route::get('profil',[
+            'uses' => 'UserController@ubahProfil',
+            'as' => 'edit.profil'
+        ]);
+
+    });
 });
 
 

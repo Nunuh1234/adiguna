@@ -7,7 +7,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <p class="navbar-brand">
+                @if(Route::currentRouteName() == 'profil')
+                    Profil
+                @endif
+            </p>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -17,6 +21,9 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ route('profil') }}">Pengaturan</a>
+                        </li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Keluar

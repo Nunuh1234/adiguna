@@ -9,8 +9,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function tampilUbahProfil()
+    {
+        return view('ubahprofil');
+    }
+
     public function ubahProfil(Request $request)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'email' => 'required'
+        ]);
+
         Auth::user()->update([
             'name' => $request->nama,
             'email' => $request->email
@@ -21,10 +31,24 @@ class UserController extends Controller
 
     public function ubahPassword(Request $request)
     {
-        if (Hash::check($request->konfirmasi_password, Auth::user()->password)){
-            Auth::user()->update([
-                'password' => bcrypt($request->password)
-            ]);
+        $this->validate($request, [
+            'password_lama' => 'required|min:6',
+            'password_baru' => 'required|min:6',
+            'konfirmasi_password_baru' => 'required|min:6'
+        ]);
+
+        if (Hash::check($request->password_lama, Auth::user()->password)){
+            if ($request->password_baru == $request->konfirmasi_password_baru){
+                Auth::user()->update([
+                    'password' => bcrypt($request->password_baru)
+                ]);
+            }
+            else{
+                return back()->with('message', 'Konfirmasi password salah!');
+            }
+        }
+        else{
+            return back()->with('message', 'Password lama salah!');
         }
 
         return back()->with('message', 'Password berhasil diganti');
