@@ -17,7 +17,8 @@
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
+<div class="content">
+    <div class="col-lg-4 col-md-3 col-sm-2"></div>
     <div class="col-lg-4 col-md-6 col-sm-8">
         <div class="logo">
             <img src="assets/img/t.png" alt="Logo">
@@ -70,6 +71,7 @@
             <p>©2017 Adiguna All rights reserved </p>
         </footer>
     </div>
+    <div class="col-lg-4 col-md-3 col-sm-2"></div>
 </div>
 </body>
 </html>
