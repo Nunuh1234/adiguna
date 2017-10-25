@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
-            Creative Tim
+        <a href="#" class="simple-text">
+            Adiguna Tupperware
         </a>
     </div>
 
@@ -13,21 +13,15 @@
             </a>
         </li>
         <li>
-            <a href="user.html">
-                <i class="pe-7s-user"></i>
-                <p>User Profile</p>
-            </a>
-        </li>
-        <li>
             <a href="table.html">
                 <i class="pe-7s-note2"></i>
-                <p>Table List</p>
+                <p>Stok</p>
             </a>
         </li>
         <li>
             <a href="typography.html">
                 <i class="pe-7s-news-paper"></i>
-                <p>Typography</p>
+                <p>Transaksi</p>
             </a>
         </li>
         <li>
@@ -37,21 +31,15 @@
             </a>
         </li>
         <li>
-            <a href="maps.html">
-                <i class="pe-7s-map-marker"></i>
-                <p>Maps</p>
-            </a>
-        </li>
-        <li>
             <a href="notifications.html">
                 <i class="pe-7s-bell"></i>
-                <p>Notifications</p>
+                <p>Utility</p>
             </a>
         </li>
         <li class="active-pro">
             <a href="upgrade.html">
                 <i class="pe-7s-rocket"></i>
-                <p>Upgrade to PRO</p>
+                <p>Keluar</p>
             </a>
         </li>
     </ul>
