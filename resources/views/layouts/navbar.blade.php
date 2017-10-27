@@ -10,6 +10,8 @@
             <p class="navbar-brand">
                 @if(Route::currentRouteName() == 'profil')
                     Profil
+                @elseif(Route::currentRouteName() == 'barang')
+                    Barang
                 @endif
             </p>
         </div>

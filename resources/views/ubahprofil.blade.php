@@ -22,7 +22,7 @@
             <div class="col-md-9 personal-info">
                 <h3>Personal info</h3>
 
-                <form class="form-horizontal" action="{{ route('edit.profil') }}" role="form">
+                <form class="form-horizontal" action="{{ route('edit.profil') }}" role="form" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="col-md-3 control-label">Name</label>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal" action="{{ route('edit.password') }}" role="form">
+                <form class="form-horizontal" action="{{ route('edit.password') }}" role="form" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="col-md-3 control-label">Password Lama</label>

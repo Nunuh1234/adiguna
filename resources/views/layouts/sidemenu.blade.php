@@ -6,16 +6,16 @@
     </div>
 
     <ul class="nav">
-        <li class="active">
+        <li>
             <a href="dashboard.html">
                 <i class="pe-7s-graph"></i>
                 <p>Dashboard</p>
             </a>
         </li>
-        <li>
-            <a href="table.html">
+        <li @if(Route::currentRouteName() == 'barang') class="active" @endif>
+            <a href="{{ route('barang', ['kategori' => 'Semua_kategori']) }}">
                 <i class="pe-7s-note2"></i>
-                <p>Stok</p>
+                <p>Barang</p>
             </a>
         </li>
         <li>

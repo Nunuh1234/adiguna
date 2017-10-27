@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         \Illuminate\Database\Eloquent\Model::unguard();
         $this->call('UserSeeder');
+        $this->call('KategoriSeeder');
+        $this->call('BarangSeeder');
     }
 }

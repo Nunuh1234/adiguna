@@ -17,8 +17,8 @@ class BarangTable extends Migration
             $table->increments('id');
             $table->integer('kategori_id')->unsigned();
             $table->foreign('kategori_id')->references('id')->on('kategori')->onUpdate('CASCADE');
-            $table->text('dir');
-            $table->string('nama');
+            $table->text('dir')->nullable();
+            $table->string('nama')->unique();
             $table->text('keterangan')->nullable();
             $table->bigInteger('harga')->unsigned();
             $table->integer('stok');
