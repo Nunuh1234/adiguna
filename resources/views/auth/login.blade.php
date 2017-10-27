@@ -17,7 +17,7 @@
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet"/>
 </head>
 <body>
-<div class="content">
+<div class="container">
     <div class="col-lg-4 col-md-3 col-sm-2"></div>
     <div class="col-lg-4 col-md-6 col-sm-8">
         <div class="logo">
@@ -32,8 +32,8 @@
                     {{ csrf_field() }}
                     <br>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-3 control-label">E-Mail Address</label>
-                        <div class="col-md-8">
+                        <label for="email" class="col-md-3 control-label">E-Mail</label>
+                        <div class="col-md-9">
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
                                    required
                                    autofocus>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="col-md-3 control-label">Password</label>
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             <input id="password" type="password" class="form-control" name="password" required>
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -55,9 +55,11 @@
                             @endif
                         </div>
                     </div>
+                    <br>
                     <div class="form-check">
                         <label class="col-md-6 form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="checkbox"
+                                   name="remember" {{ old('remember') ? 'checked' : '' }}>
                             Remember me
                         </label>
                     </div>
@@ -66,9 +68,8 @@
             </div>
         </div>
         <br>
-        <br>
         <footer class="footer">
-            <p>©2017 Adiguna All rights reserved </p>
+            <p>©2016 - {{ \Carbon\Carbon::today()->year }} Adiguna All rights reserved </p>
         </footer>
     </div>
     <div class="col-lg-4 col-md-3 col-sm-2"></div>
