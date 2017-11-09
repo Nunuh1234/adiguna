@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed">
+<nav class="navbar navbar-transparent navbar-absolute">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -7,13 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <p class="navbar-brand">
+            <a class="navbar-brand">
                 @if(Route::currentRouteName() == 'profil')
                     Profil
                 @elseif(Route::currentRouteName() == 'barang')
                     Barang
                 @endif
-            </p>
+            </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">

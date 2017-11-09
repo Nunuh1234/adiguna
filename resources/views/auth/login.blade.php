@@ -2,77 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Adiguna</title>
+
+    <title>Adiguna Tupperware</title>
+
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <meta name="viewport" content="width=device-width"/>
-    <link href="{{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet"/>
-    <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('assets/css/light-bootstrap-dashboard.css')}}" rel="stylesheet"/>
-    <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet"/>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="{{asset('assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet"/>
-    <link href="{{asset('assets/css/main.css')}}" rel="stylesheet"/>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+
+    <!-- CSS Files -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet"/>
 </head>
-<body>
-<div class="container">
-    <div class="col-lg-4 col-md-3 col-sm-2"></div>
-    <div class="col-lg-4 col-md-6 col-sm-8">
-        <div class="logo">
-            <img src="assets/img/t.png" alt="Logo">
-        </div>
-        <div class="row loginbox">
-            <div class="col-lg-12">
-                <span class="singtext">Sign in </span>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <br>
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-3 control-label">E-Mail</label>
-                        <div class="col-md-9">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                   required
-                                   autofocus>
-                            @if ($errors->has('email'))
-                                <span class="help-block">
+<body class="signup-page">
+<div class="wrapper">
+    <div class="header header-filter"
+         style="background-image: url('{{asset('assets/img/bg2.jpeg')}}'); background-size: cover; background-position: top center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                    <div class="card card-signup">
+
+                        <form class="form" method="POST" action="{{ route('login') }}">
+                            {{ csrf_field() }}
+                            <div class="header header-primary text-center">
+                                <h4>Adiguna Tupperware</h4>
+                            </div>
+                            <div class="content">
+
+                                <!--<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+                                    <input type="text" class="form-control" placeholder="First Name...">
+                                </div>-->
+
+                                <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+										<span class="input-group-addon">
+											<i class="material-icons">email</i>
+										</span>
+                                    <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                           class="form-control" placeholder="Email..." required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password" class="col-md-3 control-label">Password</label>
-                        <div class="col-md-9">
-                            <input id="password" type="password" class="form-control" name="password" required>
-                            @if ($errors->has('password'))
-                                <span class="help-block">
+                                    @endif
+                                </div>
+
+                                <div class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+										<span class="input-group-addon">
+											<i class="material-icons">lock_outline</i>
+										</span>
+                                    <input type="password" placeholder="Password..." name="password"
+                                           class="form-control" required/>
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                            @endif
-                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="footer text-center">
+                                <button href="#" class="btn btn-simple btn-primary btn-lg submitButton" type="submit">
+                                    Log In
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <br>
-                    <div class="form-check">
-                        <label class="col-md-6 form-check-label">
-                            <input class="form-check-input" type="checkbox"
-                                   name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            Remember me
-                        </label>
-                    </div>
-                    <button href="#" type="submit" class="btn  submitButton">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
-        <br>
         <footer class="footer">
-            <p>©2016 - {{ \Carbon\Carbon::today()->year }} Adiguna All rights reserved </p>
+            <div class="container">
+                <div class="copyright pull-right">
+                    &copy; 2016 - {{ \Carbon\Carbon::today()->year }} Adiguna All rights reserved
+                </div>
+            </div>
         </footer>
     </div>
-    <div class="col-lg-4 col-md-3 col-sm-2"></div>
 </div>
 </body>
+
+<script src="{{asset('assets/js/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/material.min.js')}}"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="{{asset('assets/js/nouislider.min.js')}}" type="text/javascript"></script>
+
+<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+<script src="{{asset('assets/js/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="{{asset('assets/js/material-kit.js')}}" type="text/javascript"></script>
 </html>
