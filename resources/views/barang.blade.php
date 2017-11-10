@@ -1,12 +1,81 @@
 @extends('layouts.admin')
 
 @section('konten')
-
     @if(session()->has('message'))
         {{ session()->get('message') }}
     @endif
-
     <div class="container-fluid">
+        <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Tambah Baru</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('tambah.barang') }}" enctype="multipart/form-data" method="post">
+                            {{ csrf_field() }}
+                            <label>Foto (kosongi jika tidak ada)</label>
+                            <br>
+                            <input type="file" accept="image/jpeg" name="dir">
+                            <hr>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Nama</label>
+                                    <div class="col-md-3">
+                                        <input class="form-control" type="text" name="nama" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Kategori</label>
+                                    <div class="col-md-3">
+                                        <select class="form-control" name="kategori_id">
+                                            @foreach(\App\Kategori::all() as $k)
+                                                <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Harga</label>
+                                    <div class="col-md-3">
+                                        <input class="form-control" type="number" name="harga" min="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Stok</label>
+                                    <div class="col-md-3">
+                                        <input class="form-control" name="stok" type="number" min="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Keterangan</label>
+                                    <div class="col-md-5">
+                                        <textarea name="keterangan"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancel
+                                </button>
+                                <button type="submit" class="btn btn-info btn-simple">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-md-2">
                 <div class="dropdown">
@@ -31,78 +100,7 @@
                 </button>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Tambah Baru</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('tambah.barang') }}" enctype="multipart/form-data" method="post">
-                        {{ csrf_field() }}
-                        <label>Foto (kosongi jika tidak ada)</label>
-                        <br>
-                        <input type="file" accept="image/jpeg" name="dir">
-                        <hr>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-2 control-label">Nama</label>
-                                <div class="col-md-3">
-                                    <input class="form-control" type="text" name="nama" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-2 control-label">Kategori</label>
-                                <div class="col-md-3">
-                                    <select class="form-control" name="kategori_id">
-                                        @foreach(\App\Kategori::all() as $k)
-                                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-2 control-label">Harga</label>
-                                <div class="col-md-3">
-                                    <input class="form-control" type="number" name="harga" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-2 control-label">Stok</label>
-                                <div class="col-md-3">
-                                    <input class="form-control" name="stok" type="number" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-2 control-label">Keterangan</label>
-                                <div class="col-md-5">
-                                    <textarea name="keterangan"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer form-group">
-                            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-info btn-simple">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
+        <br>
         <div class="row">
             <div class="col-md-11">
                 <div class="card">
@@ -173,7 +171,8 @@
                                                         <div class="row">
                                                             <label class="col-md-2 control-label">Nama</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" value="{{ $item->nama }}"
+                                                                <input class="form-control" type="text"
+                                                                       value="{{ $item->nama }}"
                                                                        name="nama" required>
                                                             </div>
                                                         </div>
@@ -195,7 +194,8 @@
                                                         <div class="row">
                                                             <label class="col-md-2 control-label">Harga</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="number" value="{{ $item->harga }}"
+                                                                <input class="form-control" type="number"
+                                                                       value="{{ $item->harga }}"
                                                                        name="harga" min="0"
                                                                        required>
                                                             </div>
@@ -221,7 +221,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer form-group">
-                                                        <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-default btn-simple"
+                                                                data-dismiss="modal">Cancel
+                                                        </button>
                                                         <button type="submit" class="btn btn-info btn-simple">Save
                                                         </button>
                                                     </div>
