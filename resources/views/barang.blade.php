@@ -129,10 +129,9 @@
                                     <td>{{ $item->stok }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" data-toggle="modal"
-                                                    data-target="#edit-{{ $item->id }}">Edit/Lihat
+                                            <button type="button" data-toggle="modal" data-target="#edit-{{ $item->id }}" class="btn btn-sm">Edit/Lihat
                                             </button>
-                                            <button onclick="if (confirm('Apakah anda yakin ingin menghapus {{ $item->nama }}?')){ event.preventDefault();document.getElementById('hapus-{{ $item->id }}').submit();}">
+                                            <button onclick="if (confirm('Apakah anda yakin ingin menghapus {{ $item->nama }}?')){ event.preventDefault();document.getElementById('hapus-{{ $item->id }}').submit();}" class="btn btn-sm">
                                                 Hapus
                                             </button>
                                         </div>
@@ -142,96 +141,6 @@
                                     {{ csrf_field() }}
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                 </form>
-                                <div class="modal fade" id="edit-{{ $item->id }}" tabindex="-1" role="dialog"
-                                     aria-labelledby="myModalLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-hidden="true">&times;
-                                                </button>
-                                                <h4 class="modal-title" id="myModalLabel">Edit
-                                                    <b><i>{{ $item->nama }}</i></b></h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <a href="{{ (is_null($item->dir)) ? asset('img/t-logo.png') : asset($item->dir) }}">
-                                                    <img src="{{ (is_null($item->dir)) ? asset('img/t-logo.png') : asset($item->dir) }}"
-                                                         class="img-responsive center-block">
-                                                </a>
-                                                <p>Terakhir diedit pada {{ $item->updated_at->diffForHumans() }}</p>
-                                                <form action="{{ route('edit.barang') }}" enctype="multipart/form-data"
-                                                      method="post">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                                    <label>Foto (kosongi jika tidak diganti)</label>
-                                                    <input type="file" accept="image/jpeg" name="dir">
-                                                    <br>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="col-md-2 control-label">Nama</label>
-                                                            <div class="col-md-3">
-                                                                <input class="form-control" type="text"
-                                                                       value="{{ $item->nama }}"
-                                                                       name="nama" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="col-md-2 control-label">Kategori</label>
-                                                            <div class="col-md-3">
-                                                                <select class="form-control" name="kategori_id">
-                                                                    <option value="{{ $item->kategori_id }}">{{ $item->kategori()->nama }}</option>
-                                                                    @foreach(\App\Kategori::all() as $k)
-                                                                        <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="col-md-2 control-label">Harga</label>
-                                                            <div class="col-md-3">
-                                                                <input class="form-control" type="number"
-                                                                       value="{{ $item->harga }}"
-                                                                       name="harga" min="0"
-                                                                       required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="col-md-2 control-label">Stok</label>
-                                                            <div class="col-md-3">
-                                                                <input class="form-control" name="stok" type="number"
-                                                                       value="{{ $item->stok }}" min="0"
-                                                                       required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="col-md-2 control-label">Keterangan</label>
-                                                            <div class="col-md-5">
-                                                                    <textarea
-                                                                            name="keterangan">{{ (is_null($item->keterangan)) ? '-' : $item->keterangan }}</textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer form-group">
-                                                        <button type="button" class="btn btn-default btn-simple"
-                                                                data-dismiss="modal">Cancel
-                                                        </button>
-                                                        <button type="submit" class="btn btn-info btn-simple">Save
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             @endforeach
                             </tbody>
                         </table>

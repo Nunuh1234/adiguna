@@ -56,18 +56,6 @@ class BarangController extends Controller
             'stok' => $request->stok,
         ]);
 
-        if (Input::has('dir')){
-            $this->validate($request, [
-                'dir' => 'image|mimes:jpeg,jpg,png,tif'
-            ]);
-            Input::file('dir')->move('img', 'barang-'.$request->id.'.'.Input::file('dir')->getClientOriginalExtension());
-            Barang::find($request->id)->update([
-                'dir' => 'img/barang-'.$request->id.'.'.Input::file('dir')->getClientOriginalExtension()
-            ]);
-
-            return back()->with('message', 'Berhasil memperbarui data beserta gambar barang!');
-        }
-
         return back()->with('message', 'Berhasil memperbarui data!');
     }
 
@@ -87,16 +75,6 @@ class BarangController extends Controller
             'keterangan' => $request->keterangan,
             'stok' => $request->stok,
         ]);
-
-        if (Input::has('dir')){
-            $this->validate($request, [
-                'dir' => 'image|mimes:jpeg,jpg,png,tif'
-            ]);
-            Input::file('dir')->move('img', 'barang-'.$barang->id.'.'.Input::file('dir')->getClientOriginalExtension());
-            $barang->update([
-                'dir' => 'img/barang-'.$barang->id.'.'.Input::file('dir')->getClientOriginalExtension()
-            ]);
-        }
 
         return back()->with('message', 'Berhasil menambahkan '.$barang->nama.'!');
     }

@@ -26,6 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Barang::class, function (Faker\Generator $faker) {
     return [
         'kategori_id' => rand(1,2),
+        'kode' => $faker->isbn10,
         'nama' => $faker->text(25),
         'keterangan' => $faker->text(100),
         'harga' => rand(10000, 1000000),

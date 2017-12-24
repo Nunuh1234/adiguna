@@ -9,7 +9,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <!-- Bootstrap core CSS     -->
-    <link href="{{asset('assets/css/material-dashboard.css?v=1.2.0')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/css/material-dashboard.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/css/bootstrap.min.css') }} " rel="stylesheet"/>
     <!-- Animation library for notifications -->
     <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet"/>
